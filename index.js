@@ -1,4 +1,6 @@
-// Get your shorts on - this is an array workout!
+// Globals
+const exercises = document.querySelectorAll('li');
+
 // ## Array Cardio Day 1
 // Some data we can work with
 const inventors = [
@@ -28,9 +30,34 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+function showInventorsOfThe1500s(inventorsList, exercise) {
+  const ul = document.createElement('ul');
+  const inventorsOf1500s = inventorsList.filter(inventor =>
+  inventor.year >= 1500 && inventor.year < 1600);
+
+  exercise.appendChild(ul);
+
+  inventorsOf1500s.forEach((inventor) => {
+    const li = document.createElement('li');
+    li.innerHTML = `${inventor.first} ${inventor.last}`;
+    ul.appendChild(li);
+  });
+}
+showInventorsOfThe1500s(inventors, exercises[0]);
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
+ function showInventorFullNames(inventorsList, exercise) {
+   const ul = document.createElement('ul');
+   const li = document.createElement('li');
+   const inventorFullNames = inventorsList.map(inventor => `${inventor.first} ${inventor.last}`);
+
+   li.innerHTML = `[${inventorFullNames.toString()}]`;
+   exercise.appendChild(ul);
+   ul.appendChild(li);
+ }
+showInventorFullNames(inventors, exercises[1]);
+
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
