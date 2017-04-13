@@ -58,7 +58,6 @@ showInventorsOfThe1500s(inventors, exercises[0]);
  }
 showInventorFullNames(inventors, exercises[1]);
 
-
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 function sortInventorsByAge(inventorsList, exercise) {
@@ -74,17 +73,46 @@ function sortInventorsByAge(inventorsList, exercise) {
   });
 }
 sortInventorsByAge(inventors, exercises[2]);
+
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
+function displayYearsOfLife(inventorsList, exercise) {
+  const ul = document.createElement('ul');
+  const li = document.createElement('li');
+
+  const yearsOfLife = inventorsList.reduce((years, inventor) =>
+  years + (inventor.passed - inventor.year), 0);
+
+  exercise.appendChild(ul);
+  li.textContent = `The inventors, in total, lived ${yearsOfLife} years.`;
+  ul.appendChild(li);
+}
+displayYearsOfLife(inventors, exercises[3]);
 
 // 5. Sort the inventors by years lived
+function sortByYearsLive(inventorsList, exercise) {
+  const ul = document.createElement('ul');
 
-// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+  const sorted = inventorsList.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
+
+  exercise.appendChild(ul);
+
+  sorted.forEach((inventor) => {
+    const li = document.createElement('li');
+    const years = inventor.passed - inventor.year;
+
+    li.textContent = `${inventor.first} ${inventor.last} lived ${years} years.`;
+    ul.appendChild(li);
+  });
+}
+sortByYearsLive(inventors, exercises[4]);
+
+// 6. Create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-// 7. sort Exercise
+// 7. Sort Exercise
 // Sort the people alphabetically by last name
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
-const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ]
+const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
