@@ -39,7 +39,7 @@ function showInventorsOfThe1500s(inventorsList, exercise) {
 
   inventorsOf1500s.forEach((inventor) => {
     const li = document.createElement('li');
-    li.innerHTML = `${inventor.first} ${inventor.last}`;
+    li.textContent = `${inventor.first} ${inventor.last}`;
     ul.appendChild(li);
   });
 }
@@ -52,7 +52,7 @@ showInventorsOfThe1500s(inventors, exercises[0]);
    const li = document.createElement('li');
    const inventorFullNames = inventorsList.map(inventor => `${inventor.first} ${inventor.last}`);
 
-   li.innerHTML = `[${inventorFullNames.toString()}]`;
+   li.textContent = `[${inventorFullNames.toString()}]`;
    exercise.appendChild(ul);
    ul.appendChild(li);
  }
@@ -61,7 +61,19 @@ showInventorFullNames(inventors, exercises[1]);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+function sortInventorsByAge(inventorsList, exercise) {
+  const ul = document.createElement('ul');
+  const sortedByAge = inventorsList.sort((a, b) => a.year - b.year);
 
+  exercise.appendChild(ul);
+
+  sortedByAge.forEach((inventor) => {
+    const li = document.createElement('li');
+    li.textContent = `${inventor.first} ${inventor.last} was born in ${inventor.year}.`;
+    ul.appendChild(li);
+  });
+}
+sortInventorsByAge(inventors, exercises[2]);
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
 
