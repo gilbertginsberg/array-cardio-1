@@ -112,7 +112,79 @@ sortByYearsLive(inventors, exercises[4]);
 
 // 7. Sort Exercise
 // Sort the people alphabetically by last name
+function sortLastNamesAlphabetically(persons, exercise) {
+  const ul = document.createElement('ul');
+
+  const sorted = persons.sort((a, b) => {
+  //  console.log(`a: ${a}, b: ${b}`);
+    if (a < b) {
+      return -1;
+    }
+    if (a > b) {
+      return 1;
+    }
+    return 0;
+  });
+
+  exercise.appendChild(ul);
+
+  sorted.forEach((person) => {
+    const li = document.createElement('li');
+    li.textContent = person;
+    ul.appendChild(li);
+  });
+}
+
+sortLastNamesAlphabetically(people, exercises[6]);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+
+function sumInstances(list, exercise) {
+  const ul = document.createElement('ul');
+
+  const numCars = list.reduce((sum, modeOfTransport) => {
+    if (modeOfTransport === 'car') {
+      return sum + 1;
+    }
+    return sum;
+  }, 0);
+
+  const numTrucks = list.reduce((sum, modeOfTransport) => {
+    if (modeOfTransport === 'truck') {
+      return sum + 1;
+    }
+    return sum;
+  }, 0);
+
+  const numBikes = list.reduce((sum, modeOfTransport) => {
+    if (modeOfTransport === 'bike') {
+      return sum + 1;
+    }
+    return sum;
+  }, 0);
+
+  const numWalks = list.reduce((sum, modeOfTransport) => {
+    if (modeOfTransport === 'walk') {
+      return sum + 1;
+    }
+    return sum;
+  }, 0);
+  const numVans = list.reduce((sum, modeOfTransport) => {
+    if (modeOfTransport === 'van') {
+      return sum + 1;
+    }
+    return sum;
+  }, 0);
+
+  console.log(`There are ${numCars} cars.`);
+  console.log(`There are ${numTrucks} trucks.`);
+  console.log(`There are ${numBikes} bikes.`);
+  console.log(`There are ${numWalks} ways to walk.`);
+  console.log(`There are ${numVans} vans.`);
+  console.log(list.length);
+  console.log(numCars + numTrucks + numBikes + numWalks + numVans);
+}
+
+sumInstances(data, exercises[7]);
